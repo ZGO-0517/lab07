@@ -12,5 +12,17 @@ fn main() {
 	for (day, high) in DAYS.iter().zip(highs.iter()) {
 	println!("{}: {}", day, high);
 	}
+
+    println!("Average of highs is: {}", average_temp(&highs));
+
 }
 
+fn average_temp(log: &Vec<i32>) -> f64 {
+    if log.is_empty() {
+        return 0.0;
+    }
+
+    let sum: i32 = log.iter().sum();
+
+    sum as f64 / log.len() as f64
+}
