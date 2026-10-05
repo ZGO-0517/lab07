@@ -14,6 +14,7 @@ fn main() {
 	}
 
     println!("Average of highs is: {}", average_temp(&highs));
+    println!("The hottest day is: {}", hottest_day(&highs));
 
 }
 
@@ -25,4 +26,14 @@ fn average_temp(log: &Vec<i32>) -> f64 {
     let sum: i32 = log.iter().sum();
 
     sum as f64 / log.len() as f64
+}
+
+fn hottest_day(log: &Vec<i32>) -> usize {
+	let mut sum: i32 = 0;
+	for high in log {
+		if *high > sum {
+			sum = *high
+	 		}
+		}
+	sum.try_into().unwrap()
 }
