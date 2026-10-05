@@ -15,6 +15,7 @@ fn main() {
 
     println!("Average of highs is: {}", average_temp(&highs));
     println!("The hottest day is: {}", hottest_day(&highs));
+    println!("{} days go above the threshold(75)", count_above(&highs, 75));
 
 }
 
@@ -35,5 +36,15 @@ fn hottest_day(log: &Vec<i32>) -> usize {
 			sum = *high
 	 		}
 		}
+	sum.try_into().unwrap()
+}
+
+fn count_above(log: &Vec<i32>, threshold: i32) -> usize {
+	let mut sum: i32 = 0;
+	for high in log {
+		if *high > threshold {
+			sum += 1;
+		}
+	}
 	sum.try_into().unwrap()
 }
